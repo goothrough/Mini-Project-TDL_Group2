@@ -10,8 +10,10 @@ while True:
     user_input = int(user_input)
 
     if user_input == 1:
-        # Write the Add Task logic
-        
+        task_name = input("Enter the task: ")
+        task_list.append(task_name)
+        print(f"'{task_name}' has been added to the list.")
+
         continue
     
     if user_input == 2:
