@@ -16,7 +16,12 @@ while True:
     
     if user_input == 2:
         # Write the Remove Task logic
-        
+        remove_task = input("Enter the task to remove: ")
+        if remove_task is task_list:
+            task_list.remove(remove_task)
+            print(f"{remove_task} has been remove from the list")
+        if remove_task is not task_list:
+            print(f"{remove_task} is not on the list, please try again")
         continue
     
     if user_input == 3:
