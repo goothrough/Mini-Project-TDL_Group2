@@ -40,7 +40,16 @@ while True:
     
     if user_input == 3:
         # Write the View Tasks logic
-        
+        if not task_list:
+            print("The list is empty, no task added yet.")
+
+        else:
+            print("To-Do List:")
+            for i in range(len(task_list)):
+                print(f"{i+1}. {task_list[i]}")
+
+        print()
+
         continue
     
     if user_input == 4:
