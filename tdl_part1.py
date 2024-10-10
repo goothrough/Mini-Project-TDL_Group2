@@ -21,10 +21,13 @@ while True:
     
     if user_input == 3:
         # Write the View Tasks logic
-        print("To-Do List:")
+        if not task_list:
+            print("The list is empty, no task added yet.")
 
-        for i in task_list:
-            print(i)
+        else:
+            print("To-Do List:")
+            for i in task_list:
+                print(i)
 
         continue
     
