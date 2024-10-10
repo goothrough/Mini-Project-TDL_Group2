@@ -21,7 +21,11 @@ while True:
     
     if user_input == 3:
         # Write the View Tasks logic
-        
+        print("To-Do List:")
+
+        for i in task_list:
+            print(i)
+
         continue
     
     if user_input == 4:
