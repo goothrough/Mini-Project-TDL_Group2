@@ -1,4 +1,4 @@
-task_list = []
+task_list = ["dummy"]
 
 while True:
     print("To-Do List Application")
@@ -17,9 +17,8 @@ while True:
     if user_input == 2:
         # Write the Remove Task logic
         while True:
-            remove_task = input("Enter the task to remove: ")
-            print("Or type 1 to go back:")
-            if remove_task == 1:
+            remove_task = input("Enter the task to remove or type 1 to go back:")
+            if remove_task == "1":
                 break
             if remove_task in task_list:
                 task_list.remove(remove_task)
