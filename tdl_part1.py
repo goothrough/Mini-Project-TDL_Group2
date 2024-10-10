@@ -1,4 +1,4 @@
-task_list = [1,2,3]
+task_list = []
 
 while True:
     print("To-Do List Application")
@@ -30,7 +30,7 @@ while True:
                 print(f"{i+1}. {task_list[i]}")
 
         print()
-        
+
         continue
     
     if user_input == 4:
