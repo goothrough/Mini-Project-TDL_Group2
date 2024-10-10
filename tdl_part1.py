@@ -36,5 +36,5 @@ while True:
         continue
     
     if user_input == 4:
-        # Finish the program
+        print("Exiting the application. Goodbye!")
         break
