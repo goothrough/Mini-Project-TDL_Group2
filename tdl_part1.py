@@ -1,4 +1,4 @@
-task_list = ["dummy"]
+task_list = []
 
 while True:
     print("To-Do List Application")
