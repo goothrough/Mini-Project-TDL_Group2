@@ -25,9 +25,11 @@ while True:
             print("The list is empty, no task added yet.")
 
         else:
+            j = 1
             print("To-Do List:")
             for i in task_list:
-                print(i)
+                print(f"{j}. {i}")
+                j += 1
 
         continue
     
