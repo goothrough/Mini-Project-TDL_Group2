@@ -1,4 +1,4 @@
-task_list = []
+task_list = [1,2,3]
 
 while True:
     print("To-Do List Application")
@@ -25,12 +25,12 @@ while True:
             print("The list is empty, no task added yet.")
 
         else:
-            j = 1
             print("To-Do List:")
-            for i in task_list:
-                print(f"{j}. {i}")
-                j += 1
+            for i in range(len(task_list)):
+                print(f"{i+1}. {task_list[i]}")
 
+        print()
+        
         continue
     
     if user_input == 4:
