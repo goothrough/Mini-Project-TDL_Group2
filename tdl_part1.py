@@ -10,9 +10,17 @@ while True:
     user_input = int(user_input)
 
     if user_input == 1:
-        task_name = input("Enter the task: ")
-        task_list.append(task_name)
-        print(f"'{task_name}' has been added to the list.")
+        while True:
+            task_name = input("Enter the task or type 1 to go back: ")
+            if task_name == "1":
+                break
+            
+            if task_name in task_list:
+                print("This task already exists. Try again.")
+            else:
+                task_list.append(task_name)
+                print(f"'{task_name}' has been added to the list.")
+                break
 
         continue
     
