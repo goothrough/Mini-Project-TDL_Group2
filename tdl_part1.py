@@ -6,24 +6,30 @@ def add_task():
 
         if task_name in task_list:
             print("This task already exists. Try again.")
+            print()
         else:
             task_list.append(task_name)
             print(f"'{task_name}' has been added to the list.")
+            print()
             break
+        print()
 
-def del_task():
+def remove_task():
     while True:
-        remove_task = input("Enter the task to remove or type 1 to go back:")
-        if remove_task == "1":
+        rem_task = input("Enter the task to remove or type 1 to go back:")
+        if rem_task == "1":
             break
-        if remove_task in task_list:
-            task_list.remove(remove_task)
-            print(f"{remove_task} has been remove from the list")
+        if rem_task in task_list:
+            task_list.remove(rem_task)
+            print(f"{rem_task} has been remove from the list")
+            print()
             break
-        if not remove_task in task_list:
-            print(f"{remove_task} is not on the list, please try again")
+        if not rem_task in task_list:
+            print(f"{rem_task} is not on the list, please try again")
 
-def veiw_task():
+        print()
+
+def view_task():
     if not task_list:
         print("The list is empty, no task added yet.")
 
@@ -51,11 +57,11 @@ while True:
         continue
     
     if user_input == 2:
-        del_task()
+        remove_task()
         continue
     
     if user_input == 3:
-        veiw_task()
+        view_task()
         continue
     
     if user_input == 4:
