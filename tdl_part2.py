@@ -1,3 +1,6 @@
+from pprint import pprint
+
+
 def display_main_menu():
     print("Advanced To-Do List Application")
     print("1. Add Task")
@@ -15,8 +18,32 @@ def remove_task():
     print()
 
 def view_task():
-  #Write code here  
-    print()   
+    while True:
+        if not task_list:
+            print("The list is empty, no task added yet.")
+
+        else:
+            print("To-Do List:")
+            print("{:<2} {:<25} {:<15} {:<10}".format("#", "Task", "Priority", "Deadline"))
+            print("-" * 60)
+
+            for i in range(len(task_list)):
+                # print(f"{k + 1}.", task_list[k].values())
+                print("{:<2} {:<25} {:<15} {:<10}".format(i + 1, task_list[i]["task_name"], task_list[i]["priority"],
+                                                          task_list[i]["deadline"] ))
+
+            print()
+
+            after_view = input("Enter 1 to go back to menu or enter 5 to exit: ")
+            if after_view == "1":
+                print()
+                break
+            if after_view == "5":
+                print("Exiting the application. Goodbye!")
+                break
+    return
+
+print()
     
 def suggest_task():
     #Write code here    
