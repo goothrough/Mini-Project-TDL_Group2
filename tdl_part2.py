@@ -12,28 +12,40 @@ def display_main_menu():
 
 def add_task():
     while True:
-        task_name = input("Enter the task: ")
+        task_name = input("Enter the task or type 1 to go back: ")
+        
+        if task_name == "1":
+            break
+        
         # Check if the name is duplicated
         if task_name in [task.get("task_name") for task in task_list]:
-            print(f"{task_name} already exists")
+            print(f"'{task_name}' already exists")
             print("Please try again")
             print()
             continue
 
-        priority = input("Enter the priority (high, medium, low): ")
+        priority = input("Enter the priority (high, medium, low) or type 1 to go back: ")
+
+        if priority == "1":
+            break
+        
         # Check if the priority is defined format
         if not priority in ["high", "medium", "low"]:
-            print(f"{priority} is not a valid priority")
+            print(f"'{priority}' is not a valid priority")
             print("Please try again")
             print()
             continue
 
-        deadline = input("Enter the deadline (YYYY-MM-DD): ")
+        deadline = input("Enter the deadline (YYYY-MM-DD) or type 1 to go back: ")
+        
+        if deadline == "1":
+            break
+
         # Check the date format
         try:
             datetime.strptime(deadline, "%Y-%m-%d")
         except ValueError:
-            print(f"{deadline} is not a valid format (YYYY-MM-DD)")
+            print(f"'{deadline}' is not a valid format (YYYY-MM-DD)")
             print("Please try again")
             print()
             continue
@@ -43,7 +55,7 @@ def add_task():
         task_list.append(task)
 
         print(
-            f"{task_name} with priority {priority} and deadline {deadline} has been added to the list."
+            f"'{task_name}' with priority '{priority}' and deadline '{deadline}' has been added to the list."
         )
         print()
         
