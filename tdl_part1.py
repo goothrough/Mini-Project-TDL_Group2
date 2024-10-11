@@ -50,7 +50,19 @@ while True:
     print("3. View Tasks")
     print("4. Exit")
     user_input = input("Enter your choice: ")
+    if not user_input.isnumeric():
+        print(f"{user_input} is not a valid input")
+        print("Please try again")
+        print()
+        continue
+
     user_input = int(user_input)
+    
+    if not user_input in [1,2,3,4]:
+        print(f"{user_input} is not a valid number")
+        print("Please try again")
+        print()
+        continue
 
     if user_input == 1:
         add_task()
