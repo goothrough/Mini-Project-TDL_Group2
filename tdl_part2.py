@@ -13,6 +13,7 @@ def display_main_menu():
 def add_task():
     while True:
         task_name = input("Enter the task: ")
+        # Check if the name is duplicated
         if task_name in [task.get("task_name") for task in task_list]:
             print(f"{task_name} already exists")
             print("Please try again")
@@ -20,6 +21,7 @@ def add_task():
             continue
 
         priority = input("Enter the priority (high, medium, low): ")
+        # Check if the priority is defined format
         if not priority in ["high", "medium", "low"]:
             print(f"{priority} is not a valid priority")
             print("Please try again")
@@ -27,6 +29,7 @@ def add_task():
             continue
 
         deadline = input("Enter the deadline (YYYY-MM-DD): ")
+        # Check the date format
         try:
             datetime.strptime(deadline, "%Y-%m-%d")
         except ValueError:
