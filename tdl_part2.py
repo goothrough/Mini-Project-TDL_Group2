@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 def display_main_menu():
     print("Advanced To-Do List Application")
     print("1. Add Task")
@@ -10,17 +13,37 @@ def display_main_menu():
 def add_task():
     while True:
         task_name = input("Enter the task: ")
-        priority = input("Enter the priority (high, medium, low): ")
-        deadline = input("Enter the deadline (YYYY-MM-DD): ")
+        if task_name in [task.get("task_name") for task in task_list]:
+            print(f"{task_name} already exists")
+            print("Please try again")
+            print()
+            continue
 
+        priority = input("Enter the priority (high, medium, low): ")
+        if not priority in ["high", "medium", "low"]:
+            print(f"{priority} is not a valid priority")
+            print("Please try again")
+            print()
+            continue
+
+        deadline = input("Enter the deadline (YYYY-MM-DD): ")
+        try:
+            datetime.strptime(deadline, "%Y-%m-%d")
+        except ValueError:
+            print(f"{deadline} is not a valid format (YYYY-MM-DD)")
+            print("Please try again")
+            print()
+            continue
+
+        # Add the task to the task list
         task = {"task_name": task_name, "priority": priority, "deadline": deadline}
         task_list.append(task)
 
         print(
             f"{task_name} with priority {priority} and deadline {deadline} has been added to the list."
         )
-        print(task_list)
         print()
+        
         break
 
 
