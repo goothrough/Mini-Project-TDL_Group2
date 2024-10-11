@@ -6,10 +6,24 @@ def display_main_menu():
     print("4. Suggest Tasks")
     print("5. Exit")
 
+
 def add_task():
-    #Write code here
-    print()
-    
+    while True:
+        task_name = input("Enter the task: ")
+        priority = input("Enter the priority (high, medium, low): ")
+        deadline = input("Enter the deadline (YYYY-MM-DD): ")
+
+        task = {"task_name": task_name, "priority": priority, "deadline": deadline}
+        task_list.append(task)
+
+        print(
+            f"{task_name} with priority {priority} and deadline {deadline} has been added to the list."
+        )
+        print(task_list)
+        print()
+        break
+
+
 def remove_task():
     #Write code here
     print()
