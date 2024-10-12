@@ -1,3 +1,6 @@
+from sys import flags
+
+
 def display_main_menu():
     print("Advanced To-Do List Application")
     print("1. Add Task")
@@ -12,6 +15,20 @@ def add_task():
     
 def remove_task():
     #Write code here
+    while True:
+        rem_task = input("Enter the task to remove or type 1 to go back:")
+        if rem_task == "1":
+            break
+        for i, task in enumerate(task_list):
+            if task["task_name"] == rem_task:
+                del task_list[i]
+                print(f"{rem_task} has been remove from the list")
+                print()
+                break
+        if not rem_task in task_list:
+            print(f"{rem_task} is not on the list, please try again")
+            continue
+    print()
     print()
 
 def view_task():
@@ -56,7 +73,6 @@ while True:
     if user_input == 2:
         remove_task()
         continue
-
     if user_input == 3:
         view_task()
         continue
