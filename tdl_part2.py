@@ -13,10 +13,10 @@ def display_main_menu():
 def add_task():
     while True:
         task_name = input("Enter the task or type 1 to go back: ")
-        
+
         if task_name == "1":
             break
-        
+
         # Check for duplicate task names
         if task_name in [task.get("task_name") for task in task_list]:
             print(f"'{task_name}' already exists")
@@ -24,11 +24,13 @@ def add_task():
             print()
             continue
 
-        priority = input("Enter the priority (high, medium, low) or type 1 to go back: ")
+        priority = input(
+            "Enter the priority (high, medium, low) or type 1 to go back: "
+        )
 
         if priority == "1":
             break
-        
+
         # Check if the priority value is defined
         if not priority in ["high", "medium", "low"]:
             print(f"'{priority}' is not a valid priority")
@@ -37,7 +39,7 @@ def add_task():
             continue
 
         deadline = input("Enter the deadline (YYYY-MM-DD) or type 1 to go back: ")
-        
+
         if deadline == "1":
             break
 
@@ -58,13 +60,14 @@ def add_task():
             f"'{task_name}' with priority '{priority}' and deadline '{deadline}' has been added to the list."
         )
         print()
-        
+
         break
 
 
 def remove_task():
-    #Write code here
+    # Write code here
     print()
+
 
 def view_task():
     while True:
@@ -73,26 +76,69 @@ def view_task():
 
         else:
             print("To-Do List:")
-            print("{:<2} {:<25} {:<15} {:<10}".format("#", "Task", "Priority", "Deadline"))
+            print(
+                "{:<2} {:<25} {:<15} {:<10}".format("#", "Task", "Priority", "Deadline")
+            )
             print("-" * 60)
 
             for i in range(len(task_list)):
                 # print(f"{k + 1}.", task_list[k].values())
-                print("{:<2} {:<25} {:<15} {:<10}".format(i + 1, task_list[i]["task_name"], task_list[i]["priority"],
-                                                          task_list[i]["deadline"] ))
+                print(
+                    "{:<2} {:<25} {:<15} {:<10}".format(
+                        i + 1,
+                        task_list[i]["task_name"],
+                        task_list[i]["priority"],
+                        task_list[i]["deadline"],
+                    )
+                )
 
             print()
         break
 
-print()
-    
+
+def urgency_score(self, priority_to_priority_score):
+    # Calculate urgency score (higher score = more urgent)
+    # Combine deadline proximity and priority into a single score
+
+    deadline_str = self["deadline"]
+    date_deadlime = datetime.strptime(deadline_str, "%Y-%m-%d")
+
+    days_left = (date_deadlime - datetime.now()).days
+
+    if days_left <= 0:
+        days_left = 1  # Prevent division by zero or negative days
+
+    return priority_to_priority_score[self["priority"]] / days_left
+
+
 def suggest_task():
-    #Write code here    
+    print()
+    
+    if len(task_list) == 0:
+        print("There is no task to work on.")
+        return
+
+    # Sort the task list by urgency score, then by priority, then by deadline
+
+    priority_to_priority_score = {"high": 3, "medium": 2, "low": 1}
+    sorted_task_list = sorted(
+        task_list,
+        key=lambda task: (
+            -urgency_score(task, priority_to_priority_score),
+            -priority_to_priority_score[task["priority"]],
+            datetime.strptime(task["deadline"], "%Y-%m-%d"),
+        ),
+    )
+
+    print("Hello! Here are some tasks you might want to work on:")
+    for task in sorted_task_list:
+        print(f"{task['task_name']} - {task['priority']} - {task['deadline']}")
+
     print()
 
 task_list = [
     {"task_name": "dummy_task1", "priority": "high", "deadline": "2024-10-12"},
-    {"task_name": "dummy_task2", "priority": "mid", "deadline": "2024-10-15"},
+    {"task_name": "dummy_task2", "priority": "medium", "deadline": "2024-10-15"},
     {"task_name": "dummy_task3", "priority": "low", "deadline": "2024-10-20"},
 ]
 # These dummy data will be removed later.
@@ -132,7 +178,7 @@ while True:
     if user_input == 4:
         suggest_task()
         continue
-    
+
     if user_input == 5:
         print("Exiting the application. Goodbye!")
         break
