@@ -64,6 +64,28 @@ def add_task():
 
 def remove_task():
     #Write code here
+    not_on_list = 0
+    while True:
+        rem_task = input("Enter the task to remove or type 1 to go back:")
+        if rem_task == "1":
+            break
+        for i, task in enumerate(task_list):
+            if task["task_name"] == rem_task:
+                del task_list[i]
+                not_on_list = 0
+                print(f"{rem_task} has been remove from the list")
+                print()
+                break
+            if not rem_task in task_list:
+                not_on_list = 1
+        if not_on_list == 1:
+            print(f"{rem_task} is not on the list, please try again")
+            print()
+        continue_deleting = input("What do you want to do: continue deleting task(1) or exit(2): ")
+        if continue_deleting == "1":
+            continue
+        if continue_deleting == "2":
+            break
     print()
 
 def view_task():
@@ -124,7 +146,6 @@ while True:
     if user_input == 2:
         remove_task()
         continue
-
     if user_input == 3:
         view_task()
         continue
