@@ -1,4 +1,3 @@
-from pprint import pprint
 
 
 def display_main_menu():
@@ -33,15 +32,7 @@ def view_task():
                                                           task_list[i]["deadline"] ))
 
             print()
-
-            after_view = input("Enter 1 to go back to menu or enter 5 to exit: ")
-            if after_view == "1":
-                print()
-                break
-            if after_view == "5":
-                print("Exiting the application. Goodbye!")
-                break
-    return
+        break
 
 print()
     
