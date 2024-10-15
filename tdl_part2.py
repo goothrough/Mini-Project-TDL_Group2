@@ -17,7 +17,7 @@ def add_task():
         if task_name == "1":
             break
         
-        # Check if the name is duplicated
+        # Check for duplicate task names
         if task_name in [task.get("task_name") for task in task_list]:
             print(f"'{task_name}' already exists")
             print("Please try again")
@@ -29,7 +29,7 @@ def add_task():
         if priority == "1":
             break
         
-        # Check if the priority is defined format
+        # Check if the priority value is defined
         if not priority in ["high", "medium", "low"]:
             print(f"'{priority}' is not a valid priority")
             print("Please try again")
