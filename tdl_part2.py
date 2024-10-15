@@ -1,4 +1,4 @@
-from sys import flags
+from datetime import datetime
 
 
 def display_main_menu():
@@ -9,10 +9,59 @@ def display_main_menu():
     print("4. Suggest Tasks")
     print("5. Exit")
 
+
 def add_task():
-    #Write code here
-    print()
-    
+    while True:
+        task_name = input("Enter the task or type 1 to go back: ")
+        
+        if task_name == "1":
+            break
+        
+        # Check for duplicate task names
+        if task_name in [task.get("task_name") for task in task_list]:
+            print(f"'{task_name}' already exists")
+            print("Please try again")
+            print()
+            continue
+
+        priority = input("Enter the priority (high, medium, low) or type 1 to go back: ")
+
+        if priority == "1":
+            break
+        
+        # Check if the priority value is defined
+        if not priority in ["high", "medium", "low"]:
+            print(f"'{priority}' is not a valid priority")
+            print("Please try again")
+            print()
+            continue
+
+        deadline = input("Enter the deadline (YYYY-MM-DD) or type 1 to go back: ")
+        
+        if deadline == "1":
+            break
+
+        # Check the date format
+        try:
+            datetime.strptime(deadline, "%Y-%m-%d")
+        except ValueError:
+            print(f"'{deadline}' is not a valid format (YYYY-MM-DD)")
+            print("Please try again")
+            print()
+            continue
+
+        # Add the task to the task list
+        task = {"task_name": task_name, "priority": priority, "deadline": deadline}
+        task_list.append(task)
+
+        print(
+            f"'{task_name}' with priority '{priority}' and deadline '{deadline}' has been added to the list."
+        )
+        print()
+        
+        break
+
+
 def remove_task():
     #Write code here
     not_on_list = 0
@@ -40,8 +89,24 @@ def remove_task():
     print()
 
 def view_task():
-  #Write code here  
-    print()   
+    while True:
+        if not task_list:
+            print("The list is empty, no task added yet.")
+
+        else:
+            print("To-Do List:")
+            print("{:<2} {:<25} {:<15} {:<10}".format("#", "Task", "Priority", "Deadline"))
+            print("-" * 60)
+
+            for i in range(len(task_list)):
+                # print(f"{k + 1}.", task_list[k].values())
+                print("{:<2} {:<25} {:<15} {:<10}".format(i + 1, task_list[i]["task_name"], task_list[i]["priority"],
+                                                          task_list[i]["deadline"] ))
+
+            print()
+        break
+
+print()
     
 def suggest_task():
     #Write code here    
