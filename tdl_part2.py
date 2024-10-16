@@ -65,6 +65,11 @@ def add_task():
 
 
 def remove_task():
+    if len(task_list) == 0:
+        print("There is no task to remove.")
+        print()
+        return
+
     not_on_list = 0
     while True:
         rem_task = input("Enter the task to remove or type 1 to go back:")
@@ -82,39 +87,37 @@ def remove_task():
         if not_on_list == 1:
             print(f"{rem_task} is not on the list, please try again")
             print()
-        continue_deleting = input("What do you want to do: continue deleting task(1) or exit(2): ")
+        continue_deleting = input(
+            "What do you want to do: continue deleting task(1) or exit(any other key): "
+        )
         if continue_deleting == "1":
             continue
-        if continue_deleting == "2":
+        else:
             break
     print()
 
 
 def view_task():
-    while True:
-        if not task_list:
-            print("The list is empty, no task added yet.")
+    if not task_list:
+        print("The list is empty, no task added yet.")
 
-        else:
-            print("To-Do List:")
+    else:
+        print("To-Do List:")
+        print("{:<2} {:<25} {:<15} {:<10}".format("#", "Task", "Priority", "Deadline"))
+        print("-" * 60)
+
+        for i in range(len(task_list)):
+            # print(f"{k + 1}.", task_list[k].values())
             print(
-                "{:<2} {:<25} {:<15} {:<10}".format("#", "Task", "Priority", "Deadline")
-            )
-            print("-" * 60)
-
-            for i in range(len(task_list)):
-                # print(f"{k + 1}.", task_list[k].values())
-                print(
-                    "{:<2} {:<25} {:<15} {:<10}".format(
-                        i + 1,
-                        task_list[i]["task_name"],
-                        task_list[i]["priority"],
-                        task_list[i]["deadline"],
-                    )
+                "{:<2} {:<25} {:<15} {:<10}".format(
+                    i + 1,
+                    task_list[i]["task_name"],
+                    task_list[i]["priority"],
+                    task_list[i]["deadline"],
                 )
+            )
 
-            print()
-        break
+    print()
 
 
 def urgency_score(self, priority_to_priority_score):
@@ -133,10 +136,9 @@ def urgency_score(self, priority_to_priority_score):
 
 
 def suggest_task():
-    print()
-    
     if len(task_list) == 0:
         print("There is no task to work on.")
+        print()
         return
 
     # Sort the task list by urgency score, then by priority, then by deadline
@@ -157,12 +159,8 @@ def suggest_task():
 
     print()
 
-task_list = [
-    {"task_name": "dummy_task1", "priority": "high", "deadline": "2024-10-12"},
-    {"task_name": "dummy_task2", "priority": "medium", "deadline": "2024-10-15"},
-    {"task_name": "dummy_task3", "priority": "low", "deadline": "2024-10-20"},
-]
-# These dummy data will be removed later.
+
+task_list = []
 
 
 while True:
