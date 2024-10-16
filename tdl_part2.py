@@ -65,6 +65,11 @@ def add_task():
 
 
 def remove_task():
+    if len(task_list) == 0:
+        print("There is no task to remove.")
+        print()
+        return
+
     not_on_list = 0
     while True:
         rem_task = input("Enter the task to remove or type 1 to go back:")
@@ -135,8 +140,6 @@ def urgency_score(self, priority_to_priority_score):
 
 
 def suggest_task():
-    print()
-
     if len(task_list) == 0:
         print("There is no task to work on.")
         print()
