@@ -82,10 +82,10 @@ def remove_task():
         if not_on_list == 1:
             print(f"{rem_task} is not on the list, please try again")
             print()
-        continue_deleting = input("What do you want to do: continue deleting task(1) or exit(2): ")
+        continue_deleting = input("What do you want to do: continue deleting task(1) or exit(any other key): ")
         if continue_deleting == "1":
             continue
-        if continue_deleting == "2":
+        else :
             break
     print()
 
