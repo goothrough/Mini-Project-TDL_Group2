@@ -82,10 +82,12 @@ def remove_task():
         if not_on_list == 1:
             print(f"{rem_task} is not on the list, please try again")
             print()
-        continue_deleting = input("What do you want to do: continue deleting task(1) or exit(any other key): ")
+        continue_deleting = input(
+            "What do you want to do: continue deleting task(1) or exit(any other key): "
+        )
         if continue_deleting == "1":
             continue
-        else :
+        else:
             break
     print()
 
@@ -134,9 +136,10 @@ def urgency_score(self, priority_to_priority_score):
 
 def suggest_task():
     print()
-    
+
     if len(task_list) == 0:
         print("There is no task to work on.")
+        print()
         return
 
     # Sort the task list by urgency score, then by priority, then by deadline
@@ -157,12 +160,8 @@ def suggest_task():
 
     print()
 
-task_list = [
-    {"task_name": "dummy_task1", "priority": "high", "deadline": "2024-10-12"},
-    {"task_name": "dummy_task2", "priority": "medium", "deadline": "2024-10-15"},
-    {"task_name": "dummy_task3", "priority": "low", "deadline": "2024-10-20"},
-]
-# These dummy data will be removed later.
+
+task_list = []
 
 
 while True:
