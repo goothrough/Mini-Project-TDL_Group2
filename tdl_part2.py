@@ -98,30 +98,26 @@ def remove_task():
 
 
 def view_task():
-    while True:
-        if not task_list:
-            print("The list is empty, no task added yet.")
+    if not task_list:
+        print("The list is empty, no task added yet.")
 
-        else:
-            print("To-Do List:")
+    else:
+        print("To-Do List:")
+        print("{:<2} {:<25} {:<15} {:<10}".format("#", "Task", "Priority", "Deadline"))
+        print("-" * 60)
+
+        for i in range(len(task_list)):
+            # print(f"{k + 1}.", task_list[k].values())
             print(
-                "{:<2} {:<25} {:<15} {:<10}".format("#", "Task", "Priority", "Deadline")
-            )
-            print("-" * 60)
-
-            for i in range(len(task_list)):
-                # print(f"{k + 1}.", task_list[k].values())
-                print(
-                    "{:<2} {:<25} {:<15} {:<10}".format(
-                        i + 1,
-                        task_list[i]["task_name"],
-                        task_list[i]["priority"],
-                        task_list[i]["deadline"],
-                    )
+                "{:<2} {:<25} {:<15} {:<10}".format(
+                    i + 1,
+                    task_list[i]["task_name"],
+                    task_list[i]["priority"],
+                    task_list[i]["deadline"],
                 )
+            )
 
-            print()
-        break
+    print()
 
 
 def urgency_score(self, priority_to_priority_score):
