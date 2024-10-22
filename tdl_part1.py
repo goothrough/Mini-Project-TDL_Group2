@@ -3,6 +3,11 @@ def add_task():
         task_name = input("Enter the task or type 1 to go back: ")
         if task_name == "1":
             break
+        
+        if task_name is None or task_name == "":
+            print("Task name is required. Try again.")
+            print()
+            break
 
         if task_name in task_list:
             print("This task already exists. Try again.")

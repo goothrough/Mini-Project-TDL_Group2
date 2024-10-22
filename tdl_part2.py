@@ -16,6 +16,13 @@ def add_task():
 
         if task_name == "1":
             break
+        
+        # Check if task name is empty or None
+        if task_name is None or task_name == "":
+            print("Task name is required.")
+            print("Please try again")
+            print()
+            break
 
         # Check for duplicate task names
         if task_name in [task.get("task_name") for task in task_list]:
